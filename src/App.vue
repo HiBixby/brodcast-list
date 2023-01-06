@@ -24,6 +24,7 @@
           v-bind:src="broad.broad_thumb"
           v-bind:alt="broad.broad_title"
         />
+        <div>{{ getBroadStart(i) }}</div>
       </a>
     </div>
     <div class="broad-info">
@@ -87,6 +88,16 @@ export default {
     },
     getTotalViewCnt(i) {
       return parseInt(this.broads[i].total_view_cnt).toLocaleString();
+    },
+    getBroadStart(i) {
+      const broadStart = new Date(this.broads[i].broad_start + " GMT+0900");
+      const month = ("0" + (broadStart.getMonth() + 1)).slice(-2);
+      const date = ("0" + broadStart.getDate()).slice(-2);
+      const hours = ("0" + broadStart.getHours()).slice(-2);
+      const minutes = ("0" + broadStart.getMinutes()).slice(-2);
+
+      let formatedString = `${month}-${date} ${hours}:${minutes}`;
+      return formatedString + " 방송시작";
     },
   },
   created() {
