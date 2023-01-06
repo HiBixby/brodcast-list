@@ -24,9 +24,9 @@
           v-bind:src="broad.broad_thumb"
           v-bind:alt="broad.broad_title"
         />
-        <div v-if="broad.visit_broad_type === '0'">탐방 허용</div>
-        <div>{{ getBroadStart(i) }}</div>
       </a>
+      <div v-if="broad.visit_broad_type === '0'">탐방 허용</div>
+      <div>{{ getBroadStart(i) }} 방송시작</div>
     </div>
     <div class="broad-info">
       <div class="avata-wrap">
@@ -98,7 +98,7 @@ export default {
       const minutes = ("0" + broadStart.getMinutes()).slice(-2);
 
       let formatedString = `${month}-${date} ${hours}:${minutes}`;
-      return formatedString + " 방송시작";
+      return formatedString;
     },
   },
   created() {
