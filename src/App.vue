@@ -33,7 +33,10 @@
         </a>
       </div>
       <div class="detail-wrap">
-        <a href="" v-bind:title="broad.broad_title"
+        <a
+          v-bind:href="getPlayerLink(i)"
+          v-bind:title="broad.broad_title"
+          target="_blank"
           ><h3>{{ broad.broad_title }}</h3></a
         >
         <div class="">
