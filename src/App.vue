@@ -40,7 +40,7 @@
           ><h3>{{ broad.broad_title }}</h3></a
         >
         <div class="">
-          <a v-bind:href="getBJLink(i)" target="_blank">{{
+          <a v-bind:href="getBJLink(i)" target="_blank" class="nickname">{{
             broad.user_nick
           }}</a>
           <span>{{ broad.total_view_cnt }}</span>
@@ -104,6 +104,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+a {
+  text-decoration-line: none;
+}
 .title-wrap {
   display: flex;
   justify-content: space-between;
@@ -123,5 +126,8 @@ export default {
 .broad-info {
   display: flex;
   align-items: center;
+}
+.nickname:hover {
+  text-decoration-line: underline;
 }
 </style>
