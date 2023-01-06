@@ -43,7 +43,7 @@
           <a v-bind:href="getBJLink(i)" target="_blank" class="nickname">{{
             broad.user_nick
           }}</a>
-          <span>{{ broad.total_view_cnt }}</span>
+          <span>{{ getTotalViewCnt(i) }}</span>
         </div>
       </div>
     </div>
@@ -85,6 +85,9 @@ export default {
     getBJLink(i) {
       return `http://bj.afreecatv.com/${this.broads[i].user_id}`;
     },
+    getTotalViewCnt(i) {
+      return parseInt(this.broads[i].total_view_cnt).toLocaleString();
+    },
   },
   created() {
     // this.$axios
@@ -106,6 +109,7 @@ export default {
 }
 a {
   text-decoration-line: none;
+  color: inherit;
 }
 .title-wrap {
   display: flex;
@@ -126,6 +130,9 @@ a {
 .broad-info {
   display: flex;
   align-items: center;
+}
+.nickname {
+  color: blue;
 }
 .nickname:hover {
   text-decoration-line: underline;
