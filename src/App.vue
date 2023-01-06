@@ -24,6 +24,7 @@
           v-bind:src="broad.broad_thumb"
           v-bind:alt="broad.broad_title"
         />
+        <div v-if="broad.visit_broad_type === '0'">탐방 허용</div>
         <div>{{ getBroadStart(i) }}</div>
       </a>
     </div>
