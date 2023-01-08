@@ -20,7 +20,7 @@
     <BroadElement
       v-for="broad in broads"
       :broad="broad"
-      v-bind:key="broad.broad_no"
+      v-bind:key="broad.broad_no + reloadFlag"
     >
     </BroadElement>
 
@@ -42,6 +42,7 @@ export default {
       hasMore: false,
       lastPageBlock: 0,
       broads: null,
+      reloadFlag: true,
     };
   },
   methods: {
@@ -60,6 +61,7 @@ export default {
           const pageBlock = res.data.broad.length;
           this.lastPageBlock = pageBlock;
           this.hasMore = pageBlock >= 60;
+          this.reloadFlag = !this.reloadFlag;
           if (isReload) {
             this.broads = res.data.broad;
           } else {
