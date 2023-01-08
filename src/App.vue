@@ -17,7 +17,11 @@
         </button>
       </form>
     </div>
-    <BroadElement v-for="broad in broads" :broad="broad" v-bind:key="broad.broad_no">
+    <BroadElement
+      v-for="broad in broads"
+      :broad="broad"
+      v-bind:key="broad.broad_no"
+    >
     </BroadElement>
 
     <div class="more" v-if="hasMore">
@@ -35,7 +39,7 @@ export default {
     return {
       orderType: "broad_start",
       pageNo: 1,
-      hasMore: true,
+      hasMore: false,
       lastPageBlock: 0,
       broads: null,
     };
@@ -55,9 +59,7 @@ export default {
         .then((res) => {
           const pageBlock = res.data.broad.length;
           this.lastPageBlock = pageBlock;
-          if (pageBlock < 60) {
-            this.hasMore = false;
-          }
+          this.hasMore = pageBlock >= 60;
           if (isReload) {
             this.broads = res.data.broad;
           } else {
