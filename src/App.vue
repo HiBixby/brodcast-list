@@ -139,6 +139,9 @@ a {
   text-decoration-line: none;
   color: inherit;
 }
+h3 {
+  margin: 0;
+}
 .title-wrap {
   display: flex;
   justify-content: space-between;
@@ -161,7 +164,7 @@ a {
   display: flex;
   align-items: center;
 }
-.broad-title{
+.broad-title {
   max-width: 35ch;
   overflow: hidden;
   text-overflow: ellipsis;
