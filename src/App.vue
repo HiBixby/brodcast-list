@@ -127,6 +127,11 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: "Pretendard JP Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
@@ -135,7 +140,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
 }
 a {
   text-decoration-line: none;
@@ -147,6 +151,9 @@ h3 {
 form {
   display: flex;
   align-items: center;
+}
+span {
+  font-family: inherit;
 }
 select {
   border-radius: 5px;
@@ -164,6 +171,7 @@ select:hover {
 .title-wrap {
   display: flex;
   justify-content: space-between;
+  margin: 4rem 6% 1rem;
 }
 .refresh {
   width: 2rem;
@@ -176,10 +184,13 @@ select:hover {
   cursor: pointer;
 }
 .broad-list-wrap {
+  justify-content: center;
+  width: 100vw;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(306px, 1fr));
-  row-gap: 1rem;
-  column-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(231px, 306px));
+  row-gap: 2rem;
+  column-gap: 2rem;
+  overflow-y: scroll;
 }
 .broad-wrap {
   width: 100%;
@@ -244,6 +255,7 @@ select:hover {
   border-radius: 50px;
 }
 .broad-info {
+  margin-top: 0.5rem;
   position: relative;
   display: flex;
   align-items: center;
