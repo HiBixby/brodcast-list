@@ -61,9 +61,9 @@ export default {
           const pageBlock = res.data.broad.length;
           this.lastPageBlock = pageBlock;
           this.hasMore = pageBlock >= 60;
-          this.reloadFlag = !this.reloadFlag;
           if (isReload) {
             this.broads = res.data.broad;
+          this.reloadFlag = !this.reloadFlag;
           } else {
             this.broads.push(...res.data.broad);
           }
