@@ -7,6 +7,7 @@
           loading="lazy"
           v-bind:src="broad.broad_thumb"
           v-bind:alt="broad.broad_title"
+          @error="onImgError"
         />
       </a>
       <div v-if="broad.visit_broad_type === '0'" class="allow">탐방 허용</div>
@@ -57,7 +58,11 @@ export default {
   props: {
     broad: Object,
   },
-  methods: {},
+  methods: {
+    onImgError(e) {
+      e.target.src = require("@/assets/notfound.png");
+    },
+  },
   computed: {
     getPlayerLink() {
       return `https://play.afreecatv.com/${this.broad.user_id}/${this.broad.broad_no}`;
@@ -93,6 +98,9 @@ export default {
 .thumb-wrap {
   position: relative;
   aspect-ratio: 16/9;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .thumb-wrap:hover .allow {
   opacity: 100;
@@ -114,9 +122,6 @@ export default {
   right: 0;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
-  z-index: -10;
-  background-color: whitesmoke;
 }
 .allow {
   transition: opacity 0.2s;
