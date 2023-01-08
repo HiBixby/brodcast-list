@@ -174,9 +174,11 @@ export default {
 }
 .view-cnt-wrap {
   margin-left: 0.5rem;
+  color: #888;
 }
 .icon-view-cnt {
-  fill: gray;
+  fill: #888;
   height: 10px;
+  padding-right: 5px;
 }
 </style>
