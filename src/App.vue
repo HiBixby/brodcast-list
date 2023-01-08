@@ -17,7 +17,7 @@
         </button>
       </form>
     </div>
-    <BroadElement v-for="broad in broads" :broad="broad" v-bind:key="broad">
+    <BroadElement v-for="broad in broads" :broad="broad" v-bind:key="broad.broad_no">
     </BroadElement>
 
     <div class="more" v-if="hasMore">
@@ -36,7 +36,6 @@ export default {
       orderType: "broad_start",
       pageNo: 1,
       hasMore: true,
-      broadcastList: null,
       lastPageBlock: 0,
       broads: null,
     };
@@ -54,8 +53,6 @@ export default {
       this.$axios
         .get("https://openapi.afreecatv.com/broad/list", params)
         .then((res) => {
-          console.log(res);
-          this.broadcastList = res.data;
           const pageBlock = res.data.broad.length;
           this.lastPageBlock = pageBlock;
           if (pageBlock < 60) {
