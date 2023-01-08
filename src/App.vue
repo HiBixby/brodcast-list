@@ -67,6 +67,15 @@
         </div>
       </div>
     </div>
+    <div class="more" v-if="hasMore">
+      <button
+        v-if="hasMore"
+        @click="getBroadList(false)"
+        class="btn-more"
+      >
+        더보기
+      </button>
+    </div>
   </div>
 </template>
 
@@ -78,24 +87,37 @@ export default {
     return {
       orderType: "broad_start",
       pageNo: 1,
+      hasMore: true,
       broadcastList: null,
+      lastPageBlock: 0,
       broads: null,
     };
   },
   methods: {
-    getBroadList() {
+    getBroadList(isReload = true) {
       const clientId = "e8201566692601ecee34820c9862e516";
+      const params = {
+        params: {
+          client_id: clientId,
+          order_type: this.orderType,
+          page_no: isReload ? this.pageNo : this.pageNo++,
+        },
+      };
       this.$axios
-        .get("https://openapi.afreecatv.com/broad/list", {
-          params: {
-            client_id: clientId,
-            order_type: this.orderType,
-            page_no: this.pageNo,
-          },
-        })
+        .get("https://openapi.afreecatv.com/broad/list", params)
         .then((res) => {
+          console.log(res);
           this.broadcastList = res.data;
-          this.broads = res.data.broad;
+          const pageBlock = res.data.broad.length;
+          this.lastPageBlock = pageBlock;
+          if (pageBlock < 60) {
+            this.hasMore = false;
+          }
+          if (isReload) {
+            this.broads = res.data.broad;
+          } else {
+            this.broads.push(...res.data.broad);
+          }
         })
         .catch((error) => console.log(error));
     },
@@ -180,6 +202,9 @@ select:focus {
   outline: none;
   background-color: #f2f8ff;
 }
+button:hover {
+  cursor: pointer;
+}
 .title-wrap {
   display: flex;
   justify-content: space-between;
@@ -187,7 +212,7 @@ select:focus {
 }
 .refresh {
   width: 2rem;
-  fill:#8C8C8C;
+  fill: #8c8c8c;
   padding: 0.3rem;
   border: none;
   background-color: transparent;
@@ -299,5 +324,17 @@ select:focus {
 .icon-view-cnt {
   fill: gray;
   height: 10px;
+}
+.more {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.btn-more {
+  font-family: inherit;
+  padding: 0.5rem;
+  border: none;
+  width: 100%;
 }
 </style>
