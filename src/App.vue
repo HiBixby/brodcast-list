@@ -26,8 +26,8 @@
             v-bind:alt="broad.broad_title"
           />
         </a>
-        <div v-if="broad.visit_broad_type === '0'">탐방 허용</div>
-        <div>{{ getBroadStart(i) }} 방송시작</div>
+        <div v-if="broad.visit_broad_type === '0'" class="allow">탐방 허용</div>
+        <div class="broad-start">{{ getBroadStart(i) }} 방송시작</div>
       </div>
       <div class="broad-info">
         <div class="avata-wrap">
@@ -144,12 +144,36 @@ a {
 h3 {
   margin: 0;
 }
+form {
+  display: flex;
+  align-items: center;
+}
+select {
+  border-radius: 5px;
+  padding: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: #d9dde0;
+  text-align: center;
+}
+select:hover {
+  cursor: pointer;
+}
 .title-wrap {
   display: flex;
   justify-content: space-between;
 }
 .refresh {
-  width: 30px;
+  width: 2rem;
+  fill: #2c3e50;
+  padding: 0.3rem;
+  border: none;
+  background-color: transparent;
+}
+.refresh:hover {
+  cursor: pointer;
 }
 .broad-list-wrap {
   display: grid;
@@ -158,13 +182,60 @@ h3 {
   column-gap: 1rem;
 }
 .broad-wrap {
-  overflow: scroll;
+  width: 100%;
+  height: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.thumb {
+.thumb-wrap {
+  position: relative;
+  aspect-ratio: 480/270;
+}
+.thumb-wrap:hover .allow {
+  opacity: 100;
+  transition: opacity 0.2s;
+}
+.thumb-wrap:hover .broad-start {
+  opacity: 100;
+  transition: opacity 0.2s;
+}
+.thumb-wrap a {
+  display: inline-block;
   width: 100%;
+  height: 100%;
+}
+.thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
+  z-index: -10;
+}
+.allow {
+  transition: opacity 0.2s;
+  opacity: 0;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  padding: 0 9px;
+  border-radius: 24px;
+  font-weight: 400;
+  color: #00ddff;
+  border: 1px solid #36caef;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.broad-start {
+  opacity: 0;
+  position: absolute;
+  color: white;
+  right: 7px;
+  bottom: 7px;
+  border-radius: 25px;
+  padding: 0 6px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .avata {
   object-fit: cover;
@@ -173,7 +244,7 @@ h3 {
   border-radius: 50px;
 }
 .broad-info {
-  width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -195,7 +266,7 @@ h3 {
 .nickname:hover {
   text-decoration-line: underline;
 }
-.view-cnt-wrap{
+.view-cnt-wrap {
   margin-left: 0.5rem;
 }
 .icon-view-cnt {
