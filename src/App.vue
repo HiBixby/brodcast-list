@@ -1,22 +1,22 @@
 <template>
-  <div class="title-wrap">
-    <h2>전체</h2>
-    <form>
-      <select v-model="orderType">
-        <option value="broad_start">최신순</option>
-        <option value="view_cnt">시청자순</option>
-      </select>
-      <button @click.prevent="getBroadList" class="refresh">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-          <path
-            d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"
-          />
-        </svg>
-      </button>
-    </form>
-  </div>
-  <div class="broad-list-wrap">
+  <div class="container">
+    <div class="title-wrap">
+      <h2>전체</h2>
+      <form>
+        <select v-model="orderType">
+          <option value="broad_start">최신순</option>
+          <option value="view_cnt">시청자순</option>
+        </select>
+        <button @click.prevent="getBroadList" class="refresh">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+              d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"
+            />
+          </svg>
+        </button>
+      </form>
+    </div>
     <div class="broad-wrap" v-for="(broad, i) in broads" v-bind:key="broad">
       <div class="thumb-wrap">
         <a v-bind:href="getPlayerLink(i)" target="_blank">
@@ -67,12 +67,9 @@
         </div>
       </div>
     </div>
+
     <div class="more" v-if="hasMore">
-      <button
-        v-if="hasMore"
-        @click="getBroadList(false)"
-        class="btn-more"
-      >
+      <button v-if="hasMore" @click="getBroadList(false)" class="btn-more">
         더보기
       </button>
     </div>
@@ -206,9 +203,10 @@ button:hover {
   cursor: pointer;
 }
 .title-wrap {
+  grid-column: 1/-1;
   display: flex;
   justify-content: space-between;
-  margin: 4rem 6% 1rem;
+  margin-top: 3rem;
 }
 .refresh {
   width: 2rem;
@@ -220,7 +218,7 @@ button:hover {
 .refresh:hover {
   cursor: pointer;
 }
-.broad-list-wrap {
+.container {
   justify-content: center;
   width: 100vw;
   display: grid;
