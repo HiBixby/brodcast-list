@@ -114,7 +114,7 @@ span {
 }
 select {
   border-radius: 6px;
-  padding: 10px 5px;
+  padding: 0.7rem 0.4rem;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
@@ -142,14 +142,20 @@ button:hover {
   margin-top: 3rem;
 }
 .refresh {
-  width: 2rem;
-  fill: #8c8c8c;
-  padding: 0.3rem;
+  width: 2.5rem;
+  fill:#333;
+  margin-left: 0.5rem;
+  padding: 0.7rem;
+  border-radius: 6px;
   border: none;
   background-color: transparent;
 }
 .refresh:hover {
   cursor: pointer;
+  background-color: #f5f6f7;
+}
+.refresh:focus{
+  background-color: #f2f8ff;
 }
 .container {
   justify-content: center;
