@@ -33,7 +33,11 @@
       <div class="broad-info">
         <div class="avata-wrap">
           <a v-bind:href="getBJLink(i)" target="_blank">
-            <img class="avata" v-bind:src="broad.profile_img" v-bind:alt="broad.user_nick" />
+            <img
+              class="avata"
+              v-bind:src="broad.profile_img"
+              v-bind:alt="broad.user_nick"
+            />
           </a>
         </div>
         <div class="detail-wrap">
@@ -157,17 +161,24 @@ span {
   font-family: inherit;
 }
 select {
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 6px;
+  padding: 10px 5px;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
   border: none;
-  background-color: #d9dde0;
-  text-align: center;
+  color: #333;
+}
+option {
+  color: #888;
 }
 select:hover {
   cursor: pointer;
+  background-color: #f5f6f7;
+}
+select:focus {
+  outline: none;
+  background-color: #f2f8ff;
 }
 .title-wrap {
   display: flex;
@@ -176,7 +187,7 @@ select:hover {
 }
 .refresh {
   width: 2rem;
-  fill: #2c3e50;
+  fill:#8C8C8C;
   padding: 0.3rem;
   border: none;
   background-color: transparent;
