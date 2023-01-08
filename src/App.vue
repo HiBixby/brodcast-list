@@ -273,7 +273,7 @@ select:hover {
   white-space: nowrap;
 }
 .nickname {
-  color: blue;
+  color: #4279ff;
 }
 .nickname:hover {
   text-decoration-line: underline;
