@@ -22,6 +22,7 @@
         <a v-bind:href="getPlayerLink(i)" target="_blank">
           <img
             class="thumb"
+            loading="lazy"
             v-bind:src="broad.broad_thumb"
             v-bind:alt="broad.broad_title"
           />
@@ -32,7 +33,7 @@
       <div class="broad-info">
         <div class="avata-wrap">
           <a v-bind:href="getBJLink(i)" target="_blank">
-            <img class="avata" v-bind:src="broad.profile_img" alt="" />
+            <img class="avata" v-bind:src="broad.profile_img" v-bind:alt="broad.user_nick" />
           </a>
         </div>
         <div class="detail-wrap">
@@ -225,6 +226,7 @@ select:hover {
   height: 100%;
   border-radius: 10px;
   z-index: -10;
+  background-color: whitesmoke;
 }
 .allow {
   transition: opacity 0.2s;
@@ -254,6 +256,7 @@ select:hover {
   height: 3rem;
   width: 3rem;
   border-radius: 50px;
+  background-color: whitesmoke;
 }
 .broad-info {
   margin-top: 0.5rem;
