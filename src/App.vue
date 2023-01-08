@@ -102,11 +102,14 @@ export default {
     },
   },
   created() {
-    // this.$axios
-    //   .get(
-    //     "https://openapi.afreecatv.com/broad/list?client_id=e8201566692601ecee34820c9862e516&order_type=view_cnt&page_no=1"
-    //   )
-    //   .then((res) => (this.broadcastList = res.data));
+    this.$axios
+      .get(
+        "https://openapi.afreecatv.com/broad/list?client_id=e8201566692601ecee34820c9862e516&order_type=view_cnt&page_no=1"
+      )
+      .then((res) => {
+        this.broadcastList = res.data;
+        this.broads = res.data.broad;
+      });
   },
 };
 </script>
@@ -139,8 +142,10 @@ a {
   border-radius: 15px;
 }
 .avata {
+  object-fit: cover;
+  height: 50px;
   width: 50px;
-  border-radius: 100%;
+  border-radius: 50px;
 }
 .broad-info {
   display: flex;
