@@ -39,7 +39,7 @@
           v-bind:href="getPlayerLink(i)"
           v-bind:title="broad.broad_title"
           target="_blank"
-          ><h3>{{ broad.broad_title }}</h3></a
+          ><h3 class="broad-title">{{ broad.broad_title }}</h3></a
         >
         <div class="">
           <a v-bind:href="getBJLink(i)" target="_blank" class="nickname">{{
@@ -160,6 +160,12 @@ a {
 .broad-info {
   display: flex;
   align-items: center;
+}
+.broad-title{
+  max-width: 35ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .nickname {
   color: blue;
