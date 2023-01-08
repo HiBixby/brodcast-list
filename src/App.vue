@@ -21,9 +21,7 @@
     </BroadElement>
 
     <div class="more" v-if="hasMore">
-      <button v-if="hasMore" @click="getBroadList(false)" class="btn-more">
-        더보기
-      </button>
+      <button @click="getBroadList(false)" class="btn-more">더보기</button>
     </div>
   </div>
 </template>
