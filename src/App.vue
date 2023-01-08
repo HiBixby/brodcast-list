@@ -191,6 +191,7 @@ select:hover {
   row-gap: 2rem;
   column-gap: 2rem;
   overflow-y: scroll;
+  margin-bottom: 3rem;
 }
 .broad-wrap {
   width: 100%;
